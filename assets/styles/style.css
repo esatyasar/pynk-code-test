@@ -1,16 +1,17 @@
 /* variables */
 :root {
+  /* colors */
   --buttonColor: #017bff;
+  --buttonHoverColor: #0062ca;
   --primaryTextColor: #020202;
   --secondaryTextColor: #333333;
   --whiteColor: #fff;
   --backgroundColor: rgba(199, 199, 199, 0.6);
   --alertColor: rgb(197, 3, 3);
 }
-/* Styles */
+/* General Styles */
 * {
   box-sizing: border-box;
- /*  border: 1px solid black; */
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
@@ -19,54 +20,83 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+i {
+  cursor: pointer;
+}
+span {
+  color: var(--primaryTextColor);
+  font-weight: bold;
 }
 /* Navbar Styles */
-header{
-  z-index: 100;
-  left: 0;
+header,
+footer {
   width: 100%;
-  height: auto;
-  padding: 10px 0;
-  background: #fff;
+  background-color: var(--whiteColor);
   box-shadow: 0 2px 10px 0 #e0e0e0;
-  text-align: center;
 }
-.navbarContainer{
+.navbarContainer {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: 100%;
   min-width: 26rem;
-  margin: auto;
 }
-.logo{
+.logo {
   width: 4rem;
   height: 80%;
 }
+.iconUser {
+  color: var(--buttonColor);
+  margin-left: 4rem;
+}
+.iconBars {
+  margin-right: 4rem;
+}
+/* Main Style */
 .container {
   width: 100%;
-  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding-bottom: 5rem;
 }
-.buttonContainer {
+.boxes {
   display: flex;
-  justify-content: center;
-  width: 40%;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25%;
+  height: 20vh;
   min-width: 26.5625rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
+.boxTitle {
+  color: var(--primaryTextColor);
+  margin-bottom: 1rem;
+}
+.boxText {
+  color: var(--secondaryTextColor);
+  letter-spacing: 0.5px;
+  line-height: 1.2rem;
+}
+/* Button's Style*/
 .buttonAlert,
 .buttonModal-1,
 .buttonModal-2,
 .buttonPopup,
 .closeModal-1,
 .closeAlert,
-.closePopup {
-  min-width: 30%;
-  height: 3rem;
+.closePopup,
+.buttonFree {
+  margin: auto;
+  width: 40%;
+  min-width: 10rem;
+  height: 2.5rem;
   background-color: var(--buttonColor);
   color: var(--whiteColor);
   border-radius: 0.5rem;
@@ -74,43 +104,62 @@ header{
   border: none;
   outline: none;
 }
-.buttonModal-1 {
-  margin-right: 2rem;
+.buttonModals {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.freeSection {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.footerContainer{
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
 .alertContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 26.5rem;
+  width: 100%;
   height: 15rem;
   position: fixed;
-  top: 0;
+  top:0;
   opacity: 0;
   pointer-events: none;
+  transition: 0.4s ease;
 }
+/* Popup Notifications Style */
 .alertContainer.show,
 .modalContainer.show,
-.popupContainer.show {
+.popupContainer.show,
+.freeActionSection.show {
   opacity: 1;
   pointer-events: auto;
 }
+/* Alert Box */
 .alert {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 20%;
+  margin: auto;
   background-color: var(--whiteColor);
-  border-radius: 0.5rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-  margin-top: 1rem;
+  border-radius: 0rem 0rem 2rem 2rem;
+  box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.5);
 }
 .alertTitle {
   color: var(--alertColor);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .closeAlert {
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
+/* Modal Box */
 .modalContainer {
   background-color: var(--backgroundColor);
   display: flex;
@@ -123,6 +172,7 @@ header{
   left: 0;
   opacity: 0;
   pointer-events: none;
+  transition: 0.4s ease;
 }
 .modal {
   display: flex;
@@ -130,29 +180,33 @@ header{
   justify-content: space-around;
   align-items: center;
   background-color: var(--whiteColor);
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   max-width: 40%;
   min-height: 30%;
 }
 .title,
-.popupTitle {
+.popupTitle,
+.modalTitle {
   color: var(--primaryTextColor);
   margin-top: 2rem;
 }
 .text,
-.popupText {
+.popupText,
+.modalText {
   color: var(--secondaryTextColor);
   width: 90%;
   margin: auto;
   font-size: 0.9rem;
   line-height: 1.5rem;
+  text-align: center;
 }
 .closeModal-1,
 .closePopup {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   margin-top: 1rem;
 }
+/* Popup Box */
 .popupContainer {
   background-color: var(--backgroundColor);
   display: flex;
@@ -160,19 +214,51 @@ header{
   align-items: flex-end;
   width: 100%;
   height: 100vh;
-  position:fixed;
+  position: fixed;
+  bottom: 0;
   opacity: 0;
   pointer-events: none;
+  transition: 0.4s ease;
 }
-.popup{
-  background-color: var(--backgroundColor);
+.popup {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: var(--whiteColor);
-  border-radius: 0.5rem 0.5rem 0rem 0rem ;
+  border-radius: 2rem 2rem 0rem 0rem;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
   height: 20rem;
 }
-
+button:hover {
+  background-color: var(--buttonHoverColor);
+}
+/* Free Action Box */
+.freeActionSection {
+  background-color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 26.5rem;
+  height: 15%;
+  position: fixed;
+  top: 6rem;
+  right: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 2rem;
+  min-width: 20%;
+  height: 10rem;
+  transition: 0.4s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+.checkGiffy {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+}
+.freeText {
+  color: var(--secondaryTextColor);
+  letter-spacing: 1px;
+}
