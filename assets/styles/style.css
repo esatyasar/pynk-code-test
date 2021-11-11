@@ -96,7 +96,7 @@ footer {
   margin: auto;
   width: 40%;
   min-width: 10rem;
-  height: 2.5rem;
+  min-height: 2.5rem;
   background-color: var(--buttonColor);
   color: var(--whiteColor);
   border-radius: 0.5rem;

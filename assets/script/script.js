@@ -58,7 +58,7 @@ buttonFree.addEventListener("click", () => {
   freeActionSection.classList.add("show");
   setInterval(function () {
     freeActionSection.classList.remove("show");
-  }, 2500);
+  }, 3000);
 });
 
 // Close Functions
